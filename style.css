@@ -79,11 +79,14 @@ input:focus {
   height: 20px;
   width: 20px;
   float: right;
-
 }
 
 .delete-button:hover {
   background: #FFF url('images/delete-hover.svg') no-repeat;
+}
+
+.delete-button:focus {
+  outline: none;
 }
 
 .idea-box-container {
@@ -91,4 +94,26 @@ input:focus {
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+.upvote-button {
+  background: #FFF url('images/upvote.svg')  no-repeat;
+  border: none;
+  height: 20px;
+  width: 20px;
+}
+
+.upvote-button:hover {
+  background: #FFF url('images/upvote-hover.svg') no-repeat;
+}
+
+.downvote-button {
+  background: #FFF url('images/downvote.svg') no-repeat;
+  border: none;
+  height: 20px;
+  width: 20px;
+}
+
+.downvote-button:hover {
+  background: #FFF url('images/downvote-hover.svg') no-repeat;
 }

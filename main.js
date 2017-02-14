@@ -21,8 +21,8 @@ function prependIdeaBox(ideaObj) {
       <button class="delete-button"></button>
       <p contenteditable>${ideaObj.body}</p>
       <section class="quality">
-        <img href="images/upvote.svg" width="10">
-        <img href="images/downvote.svg" width="10">
+        <button class="upvote-button"></button>
+        <button class="downvote-button"></button>
         <h3>quality: ${ideaObj.quality}</h3>
       </section>
     </article>
