@@ -59,11 +59,11 @@ input:focus {
   box-sizing: border-box;
 }
 
-.save-button:hover {
+#save-button:hover {
   background-color: #045E55;
 }
 
-.save-button:disabled {
+#save-button:disabled {
   background-color: #6D6E71;
 }
 
@@ -78,8 +78,14 @@ input:focus {
   border: none;
   height: 20px;
   width: 20px;
+  float: right;
 
 }
+
+.delete-button:hover {
+  background: #FFF url('images/delete-hover.svg') no-repeat;
+}
+
 .idea-box-container {
   margin-top: 20px;
   display: flex;
