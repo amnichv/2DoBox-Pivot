@@ -17,7 +17,7 @@ function prependIdeaBox(ideaObj) {
   $('.idea-box-container').prepend(
     `<article id="${ideaObj.id}">
       <h2>${ideaObj.title}</h2>
-      <button><img href="images/delete.svg" width="10"></button>
+      <button class="delete-button"></button>
       <p>${ideaObj.body}</p>
       <section class="quality">
         <img href="images/upvote.svg" width="10">

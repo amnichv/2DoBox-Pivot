@@ -73,7 +73,13 @@ input:focus {
   flex-direction: column;
   margin-top: 10px;
 }
+.delete-button {
+  background: #FFF url('images/delete.svg')  no-repeat;
+  border: none;
+  height: 20px;
+  width: 20px;
 
+}
 .idea-box-container {
   margin-top: 20px;
   display: flex;
