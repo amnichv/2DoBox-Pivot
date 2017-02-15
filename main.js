@@ -17,8 +17,8 @@ function IdeaObject (id, title, body){
 function prependIdeaBox(ideaObj) {
   $('.idea-box-container').prepend(
     `<article id="${ideaObj.id}">
-      <h2 contenteditable>${ideaObj.title}</h2>
       <button class="delete-button"></button>
+      <h2 contenteditable>${ideaObj.title}</h2>
       <p contenteditable>${ideaObj.body}</p>
       <section class="quality">
         <button class="upvote-button"></button>
