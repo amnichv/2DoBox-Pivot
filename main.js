@@ -106,3 +106,12 @@ $('.idea-box-container').on('focus', '.idea-title, .idea-body', function() {
     localStorage.setItem(key, JSON.stringify(ideabox));
   })
 })
+
+$('#search-input').on('keyup',function (){
+  var searchValue = $(this).val().toLowerCase();
+  $('.idea-card').each(function(){
+    var text = $(this).text().toLowerCase();
+    var isAMatch = !!text.match(searchValue);
+    $(this).closest('.idea-card').toggle(isAMatch);
+  });
+});
