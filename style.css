@@ -29,7 +29,6 @@ h1 {
   font-size: 18px;
   font-family: "Open Sans", sans-serif;
   box-sizing: border-box;
-
 }
 
 .small-input {
@@ -80,7 +79,6 @@ input:focus {
   align-items: center;
   flex-direction: column;
   position: relative;
-
 }
 
 article {
@@ -128,7 +126,9 @@ p {
   background-position: -21px 0;
 }
 
-.delete-button:focus {
+.delete-button:focus,
+.upvote-button:focus,
+.downvote-button:focus {
   outline: none;
 }
 
@@ -156,4 +156,19 @@ h3{
   font-weight: 500;
   font-size: 14px;
   color: #6D6E71;
+}
+
+@media screen and (min-width: 640px){
+
+  .input,
+  textarea,
+  #save-button,
+  article {
+    width: 60%;
+  }
+
+  article {
+    max-height: 200px;
+    overflow: scroll;
+  }
 }
