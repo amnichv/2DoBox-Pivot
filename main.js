@@ -32,8 +32,8 @@ function prependIdeaBox(ideaObj) {
   $('.idea-box-container').prepend(
     `<article class="idea-card" id="${ideaObj.id}">
       <button class="delete-button"></button>
-      <h2 contenteditable>${ideaObj.title}</h2>
-      <p contenteditable>${ideaObj.body}</p>
+      <h2 class="idea-title" contenteditable>${ideaObj.title}</h2>
+      <p class="idea-body" contenteditable>${ideaObj.body}</p>
       <section class="quality">
         <button class="upvote-button"></button>
         <button class="downvote-button"></button>
@@ -86,6 +86,7 @@ $('.idea-box-container').on('focus', '.idea-title, .idea-body', function() {
     if(event.keyCode === 13){
       event.preventDefault();
       $(this).blur();
+      return false;
     }
   })
 
