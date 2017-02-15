@@ -2,16 +2,17 @@ $('#save-button').on('click', function() {
   var $title = $('#title-input').val();
   var $body = $('#body-input').val();
   var $uniqId = Date.now()
-  var $newIdea = new IdeaObject ($uniqId, $title, $body);
+  var $quality = 'swill';
+  var $newIdea = new IdeaObject ($uniqId, $title, $body, $quality);
   prependIdeaBox($newIdea);
   resetInputs();
 })
 
-function IdeaObject (id, title, body){
+function IdeaObject (id, title, body, quality){
   this.id = id;
   this.title = title;
   this.body = body;
-  this.quality = 'swill';
+  this.quality = quality;
 }
 
 function prependIdeaBox(ideaObj) {
@@ -23,7 +24,7 @@ function prependIdeaBox(ideaObj) {
       <section class="quality">
         <button class="upvote-button"></button>
         <button class="downvote-button"></button>
-        <h3>quality: ${ideaObj.quality}</h3>
+        <h3>quality: <span class="current-quality">${ideaObj.quality}</span></h3>
       </section>
     </article>
     `
@@ -41,4 +42,22 @@ function resetInputs(){
 
 $('#title-input, #body-input').on('keyup', function(){
   $('#save-button').prop('disabled', false);
+})
+
+$('.idea-box-container').on('click','.upvote-button' , function() {
+  var $currentQuality = $(this).siblings('h3').find('.current-quality');
+  if ($currentQuality.text() === "swill") {
+    $currentQuality.text("plausible");
+  } else if ($currentQuality.text() === "plausible"){
+    $currentQuality.text("genius");
+  }
+})
+
+$('.idea-box-container').on('click','.downvote-button', function() {
+  var $currentQuality = $(this).siblings('h3').find('.current-quality');
+  if ($currentQuality.text() === "genius") {
+    $currentQuality.text("plausible");
+  } else if ($currentQuality.text() === "plausible"){
+    $currentQuality.text("swill");
+  }
 })
