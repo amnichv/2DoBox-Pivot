@@ -50,9 +50,9 @@ $('.idea-box-container').on('click','.upvote-button' , function() {
 
 function upVote(IdeaObject){
   if ($(this.quality) === "swill") {
-    $(this.quality) = "plausible";
+    return $(this.quality) = "plausible";
   } else if ($(this.quality) === "plausible"){
-    $(this.quality) = "genius";
+    return $(this.quality) = "genius";
   }
   console.log('horse');
 }
