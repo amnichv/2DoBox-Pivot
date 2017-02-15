@@ -24,7 +24,7 @@ function prependIdeaBox(ideaObj) {
       <section class="quality">
         <button class="upvote-button"></button>
         <button class="downvote-button"></button>
-        <h3>quality: ${ideaObj.quality}</h3>
+        <h3>quality: <span class="current-quality">${ideaObj.quality}</span></h3>
       </section>
     </article>
     `
@@ -45,14 +45,19 @@ $('#title-input, #body-input').on('keyup', function(){
 })
 
 $('.idea-box-container').on('click','.upvote-button' , function() {
-  upVote();
+  var $currentQuality = $(this).siblings('h3').find('.current-quality');
+  if ($currentQuality.text() === "swill") {
+    $currentQuality.text("plausible");
+  } else if ($currentQuality.text() === "plausible"){
+    $currentQuality.text("genius");
+  }
 })
 
-function upVote(IdeaObject){
-  if ($(this.quality) === "swill") {
-    return $(this.quality) = "plausible";
-  } else if ($(this.quality) === "plausible"){
-    return $(this.quality) = "genius";
+$('.idea-box-container').on('click','.downvote-button', function() {
+  var $currentQuality = $(this).siblings('h3').find('.current-quality');
+  if ($currentQuality.text() === "genius") {
+    $currentQuality.text("plausible");
+  } else if ($currentQuality.text() === "plausible"){
+    $currentQuality.text("swill");
   }
-  console.log('horse');
-}
+})
