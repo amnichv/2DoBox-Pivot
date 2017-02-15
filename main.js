@@ -2,16 +2,17 @@ $('#save-button').on('click', function() {
   var $title = $('#title-input').val();
   var $body = $('#body-input').val();
   var $uniqId = Date.now()
-  var $newIdea = new IdeaObject ($uniqId, $title, $body);
+  var $quality = 'swill';
+  var $newIdea = new IdeaObject ($uniqId, $title, $body, $quality);
   prependIdeaBox($newIdea);
   resetInputs();
 })
 
-function IdeaObject (id, title, body){
+function IdeaObject (id, title, body, quality){
   this.id = id;
   this.title = title;
   this.body = body;
-  this.quality = 'swill';
+  this.quality = quality;
 }
 
 function prependIdeaBox(ideaObj) {
@@ -47,11 +48,11 @@ $('.idea-box-container').on('click','.upvote-button' , function() {
   upVote();
 })
 
-function upVote(){
-  if ($('.quality').val() === "swill") {
-    $('.quality').val() = "plausible";
-  } else if ($('.quality').val() === "plausible"){
-    $('.quality').val() = "genius";
+function upVote(IdeaObject){
+  if ($(this.quality) === "swill") {
+    $(this.quality) = "plausible";
+  } else if ($(this.quality) === "plausible"){
+    $(this.quality) = "genius";
   }
   console.log('horse');
 }
