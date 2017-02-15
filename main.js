@@ -51,7 +51,6 @@ $('.idea-box-container').on('click', '.delete-button', (function() {
   localStorage.removeItem(selectId)
 }))
 
-
 function resetInputs(){
   $('#title-input, #body-input').val("");
   $('#save-button').prop('disabled', true);
