@@ -80,22 +80,7 @@ input:focus {
   align-items: center;
   flex-direction: column;
   position: relative;
-}
 
-.delete-button {
-  display: inline;
-  float: right;
-  top: 5px;
-  right: 5px;
-  background: #FFF url('images/delete.svg')  no-repeat;
-}
-
-.delete-button:hover {
-  background: #FFF url('images/delete-hover.svg') no-repeat;
-}
-
-.delete-button:focus {
-  outline: none;
 }
 
 article {
@@ -103,6 +88,7 @@ article {
   width: 80%;
   min-height: 100px;
   padding-left: 5px;
+  margin-top: 15px;
 }
 
 h2 {
@@ -123,28 +109,45 @@ p {
 .upvote-button,
 .downvote-button,
 .delete-button {
+  background: url('images/sprite.png') no-repeat top left;
   border: none;
   height: 20px;
   width: 20px;
   margin-bottom: 15px;
 }
 
+.delete-button {
+  display: inline;
+  float: right;
+  top: 5px;
+  right: 5px;
+  background-position: 0 0;
+}
+
+.delete-button:hover {
+  background-position: -21px 0;
+}
+
+.delete-button:focus {
+  outline: none;
+}
+
 .upvote-button {
-  background: #FFF url('images/upvote.svg')  no-repeat;
+  background-position: -42px 0;
   margin-right: 5px;
 }
 
 .upvote-button:hover {
-  background: #FFF url('images/upvote-hover.svg') no-repeat;
+  background-position: -63px 0;
 }
 
 .downvote-button {
-  background: #FFF url('images/downvote.svg') no-repeat;
+  background-position: -85px 0;
   margin-right: 10px;
 }
 
 .downvote-button:hover {
-  background: #FFF url('images/downvote-hover.svg') no-repeat;
+  background-position: -106px 0;
 }
 
 h3{
