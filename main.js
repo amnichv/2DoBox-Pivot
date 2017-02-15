@@ -42,3 +42,14 @@ function resetInputs(){
 $('#title-input, #body-input').on('keyup', function(){
   $('#save-button').prop('disabled', false);
 })
+
+$('.idea-box-container').on('click','.upvote-button' , function() {
+  upVote();
+})
+
+function upVote(){
+  if ($('.quality').val() === "swill") {
+    $('.quality').val() = "plausible";
+  }
+  console.log('horse');
+}
