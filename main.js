@@ -1,9 +1,22 @@
+$(function () {
+  for (var i = 0; i < localStorage.length; i++){
+    var $storedIdeas = getStoredIdeas(localStorage.key(i));
+    prependIdeaBox($storedIdeas)
+  }
+})
+
+function getStoredIdeas (id) {
+  return JSON.parse(localStorage.getItem(id));
+}
+
 $('#save-button').on('click', function() {
   var $title = $('#title-input').val();
   var $body = $('#body-input').val();
   var $uniqId = Date.now()
   var $quality = 'swill';
   var $newIdea = new IdeaObject ($uniqId, $title, $body, $quality);
+  var key = $newIdea.id;
+  localStorage.setItem(key, JSON.stringify($newIdea));
   prependIdeaBox($newIdea);
   resetInputs();
 })
@@ -17,7 +30,7 @@ function IdeaObject (id, title, body, quality){
 
 function prependIdeaBox(ideaObj) {
   $('.idea-box-container').prepend(
-    `<article id="${ideaObj.id}">
+    `<article class="idea-card" id="${ideaObj.id}">
       <button class="delete-button"></button>
       <h2 contenteditable>${ideaObj.title}</h2>
       <p contenteditable>${ideaObj.body}</p>
@@ -32,8 +45,12 @@ function prependIdeaBox(ideaObj) {
 }
 
 $('.idea-box-container').on('click', '.delete-button', (function() {
-  $(this).parent().remove();
+  var selectId = $(this).parents('.idea-card').attr('id')
+  console.log(selectId)
+  $(this).parents('.idea-card').remove()
+  localStorage.removeItem(selectId)
 }))
+
 
 function resetInputs(){
   $('#title-input, #body-input').val("");
@@ -60,4 +77,21 @@ $('.idea-box-container').on('click','.downvote-button', function() {
   } else if ($currentQuality.text() === "plausible"){
     $currentQuality.text("swill");
   }
+})
+
+$('.idea-box-container').on('focus', '.idea-title, .idea-body', function() {
+  var key = $(this).closest('.idea-card').attr('id')
+  var ideabox = JSON.parse(localStorage.getItem(key));
+  $(this).on('keydown', function(event) {
+    if(event.keyCode === 13){
+      event.preventDefault();
+      $(this).blur();
+    }
+  })
+
+  $(this).on('blur', function() {
+    ideabox.title = $(this).closest('.idea-card').find('.idea-title').text();
+    ideabox.body = $(this).closest('.idea-card').find('.idea-body').text();
+    localStorage.setItem(key, JSON.stringify(ideabox));
+  })
 })
