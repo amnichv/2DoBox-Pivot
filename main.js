@@ -48,7 +48,6 @@ function prependIdeaBox(ideaObj) {
 
 $('.idea-box-container').on('click', '.delete-button', (function() {
   var selectId = $(this).parents('.idea-card').attr('id')
-  console.log(selectId)
   $(this).parents('.idea-card').remove()
   localStorage.removeItem(selectId)
 }))
@@ -63,7 +62,7 @@ $('#title-input, #body-input').on('keyup', function(){
 })
 
 $('.idea-box-container').on('click','.upvote-button' , function() {
-  var $currentQuality = $(this).siblings('h3').find('.current-quality');
+  var $currentQuality = $(this).closest('.idea-card').find('.current-quality');
   if ($currentQuality.text() === "swill") {
     $currentQuality.text("plausible");
   } else if ($currentQuality.text() === "plausible"){
@@ -77,7 +76,7 @@ $('.idea-box-container').on('click','.upvote-button' , function() {
 })
 
 $('.idea-box-container').on('click','.downvote-button', function() {
-  var $currentQuality = $(this).siblings('h3').find('.current-quality');
+  var $currentQuality = $(this).closest('.idea-card').find('.current-quality');
   if ($currentQuality.text() === "genius") {
     $currentQuality.text("plausible");
   } else if ($currentQuality.text() === "plausible"){

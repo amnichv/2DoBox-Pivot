@@ -160,11 +160,19 @@ h3{
 
 @media screen and (min-width: 640px){
 
+  h1{
+    font-size: 2.5em;
+  }
+
   .input,
   textarea,
   #save-button,
   article {
     width: 60%;
+  }
+
+  textarea {
+    height: 28px;
   }
 
   article {
