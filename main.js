@@ -32,8 +32,10 @@ function prependIdeaBox(ideaObj) {
   $('.idea-box-container').prepend(
     `<article class="idea-card" id="${ideaObj.id}">
       <button class="delete-button"></button>
+      <section class="search-target">
       <h2 class="idea-title" contenteditable>${ideaObj.title}</h2>
       <p class="idea-body" contenteditable>${ideaObj.body}</p>
+      </section>
       <section class="quality">
         <button class="upvote-button"></button>
         <button class="downvote-button"></button>
@@ -108,7 +110,7 @@ $('.idea-box-container').on('focus', '.idea-title, .idea-body', function() {
 
 $('#search-input').on('keyup',function (){
   var searchValue = $(this).val().toLowerCase();
-  $('.idea-card').each(function(){
+  $('.search-target').each(function(){
     var text = $(this).text().toLowerCase();
     var isAMatch = !!text.match(searchValue);
     $(this).closest('.idea-card').toggle(isAMatch);
